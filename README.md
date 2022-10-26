@@ -1,5 +1,5 @@
 
-# ![logo.png](https://github.com/ITMO-NSS-team/SeismicDeformation/blob/main/images/SeDef_logo.png?raw=true)
+
 
 A module for preparing and processing data from the development of a mineral deposit. Based on 
 machine learning methods, it allows data preprocessing (data sampling over space and time, 
