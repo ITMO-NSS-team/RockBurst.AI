@@ -21,6 +21,21 @@ class Ssa:
 
     def __init__(self, time_series):
 
+        """
+Initializes the TimeSeriesAnalyzer with a given time series.
+
+    This constructor takes a time series as input and initializes 
+    the internal attributes for the time series values, the number 
+    of observations, and the inferred frequency of the time series.
+
+    Args:
+        time_series (pd.Series): A pandas Series object representing 
+        the time series data to be analyzed.
+
+    Returns:
+        None
+    """
+
         self.ts = pd.DataFrame(time_series)
         self.ts_name = self.ts.columns.tolist()[0]
         if self.ts_name == 0:
@@ -183,6 +198,19 @@ class Ssa:
             return hankel_full
 
     def _forecast_prep(self, singular_values=None):
+        """
+Prepares the forecast by computing necessary components.
+
+    This method initializes and computes the required matrices and coefficients 
+    for the forecasting process. It calculates the orthonormal base and updates 
+    the internal state variables used in the forecasting algorithm.
+
+    Args:
+        self: The instance of the class.
+
+    Returns:
+        None
+    """
         self.X_com_hat = np.zeros(self.complete_dimensions)
         verticality_coefficient = 0
         forecast_orthonormal_base = {}

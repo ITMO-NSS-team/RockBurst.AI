@@ -45,6 +45,16 @@ class Launcher:
     _forbidden_names = ['Cluster', 'New_datetime', 'distance']
 
     def __init__(self, dataframe: pd.DataFrame, datetime_column: str):
+        """
+Initializes the class with a DataFrame and a specified datetime column.
+
+    Args:
+        dataframe (pd.DataFrame): The DataFrame containing the data to be processed.
+        datetime_column (str): The name of the column in the DataFrame that contains datetime values.
+
+    Returns:
+        None
+    """
         self.df = dataframe
         self.datetime_column = datetime_column
         self.auto_time_step = None
@@ -141,11 +151,52 @@ class BlocksFabrid:
     Class for providing appropriate operations by it's name and parameters
     """
     def __init__(self, dataframe, auto_time_step):
+        """
+Initializes the class with a given dataframe and auto time step.
+
+    Args:
+        dataframe (pandas.DataFrame): The dataframe to be used for processing.
+        auto_time_step (bool): A flag indicating whether to automatically determine the time step.
+
+    Returns:
+        None
+    """
         self.dataframe = dataframe
         self.auto_time_step = auto_time_step
 
     def do_process(self, operation_name, params,
                    datetime_column, time_step):
+
+        """
+Perform a specified data processing operation on the instance's dataframe.
+
+    This method executes various operations on the dataframe based on the 
+    provided operation name. The operations include plotting in 3D, creating 
+    clusters, finding optimal time steps, and more. The dataframe is updated 
+    in place for certain operations.
+
+    Args:
+        operation_name (str): The name of the operation to perform. 
+            Possible values include:
+            - '3D show static'
+            - '3D show interactive'
+            - 'Create clusters with centroids'
+            - '3D show clusters static'
+            - 'Find optimal time step'
+            - 'Set time step'
+            - 'Merge and tense'
+            - 'Line show interactive'
+        params (dict): A dictionary of parameters required for the operation. 
+            The contents depend on the specific operation being performed.
+        datetime_column (str): The name of the column in the dataframe that 
+            contains datetime values, used for time-related operations.
+        time_step (str): The time step to be used for certain operations, 
+            which may be updated based on the operation performed.
+
+    Returns:
+        None: This method does not return a value. It modifies the instance's 
+        dataframe directly and may update the time_step variable.
+    """
 
         if operation_name == '3D show static':
             # OPTIONAL
@@ -235,4 +286,13 @@ class BlocksFabrid:
         return time_step
 
     def get_dataframe(self):
+        """
+Retrieve the dataframe stored in the instance.
+
+    This method returns the dataframe attribute of the instance, 
+    allowing access to the data contained within it.
+
+    Returns:
+        pandas.DataFrame: The dataframe associated with the instance.
+    """
         return self.dataframe

@@ -27,6 +27,22 @@ class DiscreteStepSearch:
     """
 
     def __init__(self, dataframe, collision_w=0.5, gaps_w=0.5, vis=False):
+        """
+Initializes an instance of the class.
+
+    This method sets up the initial state of the object by storing the provided
+    dataframe and initializing various attributes related to collision weights,
+    gap weights, and visualization options.
+
+    Args:
+        dataframe (pandas.DataFrame): The input dataframe containing the data to be processed.
+        collision_w (float, optional): The weight assigned to collisions. Defaults to 0.5.
+        gaps_w (float, optional): The weight assigned to gaps. Defaults to 0.5.
+        vis (bool, optional): A flag indicating whether to visualize the solutions. Defaults to False.
+
+    Returns:
+        None
+    """
         self.df = dataframe
         self.collision_w = collision_w
         self.gaps_w = gaps_w
@@ -146,6 +162,22 @@ class DiscreteStepSearch:
             pass
 
     def __calculations_valid_solution(self, intervals):
+        """
+Evaluate the validity of a proposed solution based on time intervals.
+
+    This method calculates the number of gaps and collisions in a proposed 
+    partition of time intervals, updating the internal statistics accordingly. 
+    It generates a set of proposed splits based on the specified number of 
+    intervals and assesses how well these splits align with existing time 
+    data.
+
+    Args:
+        intervals (int): The number of intervals to divide the time range into.
+
+    Returns:
+        None: This method does not return a value but updates internal 
+        statistics related to gaps and collisions.
+    """
         # Generating a massive with the suggested number of iterations
         start = self.start_seconds
         end = self.final_seconds
